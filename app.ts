@@ -1,6 +1,13 @@
 import { Context, Hono } from "hono";
+import { exists } from "@std/fs";
 
-const kv = await Deno.openKv(Deno.env.get("KVS_PATH"));
+// load env
+const kvsPathResponse = Deno.env.get("KVS_PATH");
+const kvsPath = kvsPathResponse && !kvsPathResponse.includes("/") &&
+    await exists("/.dockerenv")
+  ? `/data/${kvsPathResponse}`
+  : kvsPathResponse;
+const kv = await Deno.openKv(kvsPath);
 const enableKeyList = Deno.env.get("ENABLE_KEY_LIST") === "true";
 
 // root app
