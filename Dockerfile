@@ -5,6 +5,6 @@ USER deno
 WORKDIR /app
 
 COPY . .
-RUN deno cache server.ts
+RUN deno cache serve.ts
 
-CMD ["run", "--unstable-kv", "--allow-net", "--allow-env", "--allow-read", "--allow-write", "server.ts"]
+CMD ["run", "--unstable-kv", "--allow-net", "--allow-env", "--allow-read", "--allow-write", "serve.ts"]
