@@ -34,7 +34,9 @@ Delete key in kvs.
 
 ## Environment variables
 
-`KVS_PATH`: Specifies the path to the SQLite file. If not specified, see
+`KVS_PATH`: Specifies the path to the SQLite file. If you specify a string that
+does not contain a slash and you run the server as a Docker container, KVS will
+be created in `/data/${KVS_PATH}`. If not specified, see
 [Deno KV Documentation](https://docs.deno.com/deploy/kv/manual/).
 
 `ENABLE_KEY_LIST`: If “true”, provides an endpoint to retrieve a list of keys.
