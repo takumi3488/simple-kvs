@@ -8,7 +8,7 @@ Deno.test("store text", async () => {
       "content-type": "text/plain",
     },
     body: "stored text",
-  })
+  });
   assertEquals(status, 204);
   const value = await (await app.request("/testKey")).text();
   assertEquals(value, "stored text");
@@ -28,7 +28,7 @@ Deno.test("store json", async () => {
       "content-type": "application/json",
     },
     body: JSON.stringify({ a: 1 }),
-  })
+  });
   assertEquals(status, 204);
   const value = await (await app.request("/testKey")).json();
   assertEquals(value["a"], 1);
@@ -41,9 +41,9 @@ Deno.test("store invalid json", async () => {
       "content-type": "application/json",
     },
     body: "invalid json",
-  })
+  });
   assertEquals(status, 400);
-})
+});
 
 Deno.test("store invalid content type", async () => {
   const { status } = await app.request("/testKey", {
@@ -52,6 +52,6 @@ Deno.test("store invalid content type", async () => {
       "content-type": "application/xml",
     },
     body: "stored text",
-  })
+  });
   assertEquals(status, 400);
 });

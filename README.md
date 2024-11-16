@@ -8,12 +8,13 @@ Start using deno cli or docker.
 
 ### `GET /{key}`
 
-Returns status code 200 and value if key is in kvs, otherwise returns status code 404
+Returns status code 200 and value if key is in kvs, otherwise returns status
+code 404
 
 ### `PUT /{key}`
 
-Upserts the request body to the key.
-key can contain alphanumeric characters (case-insensitive), periods, hyphens, and underscores.
+Upserts the request body to the key. key can contain alphanumeric characters
+(case-insensitive), periods, hyphens, and underscores.
 
 When Content-Type is text/plain:
 
@@ -33,6 +34,9 @@ Delete key in kvs.
 
 ## Environment variables
 
-`KVS_PATH`: Specifies the path to the SQLite file. If not specified, see [Deno KV Documentation](https://docs.deno.com/deploy/kv/manual/).
+`KVS_PATH`: Specifies the path to the SQLite file. If not specified, see
+[Deno KV Documentation](https://docs.deno.com/deploy/kv/manual/).
 
-`ENABLE_KEY_LIST`: If “true”, provides an endpoint to retrieve a list of keys. Do not set this to “true” unless the number of keys is small, such as in the case of a master key.
+`ENABLE_KEY_LIST`: If “true”, provides an endpoint to retrieve a list of keys.
+Do not set this to “true” unless the number of keys is small, such as in the
+case of a master key.
