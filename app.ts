@@ -90,7 +90,6 @@ keyRoute.delete("/:key", async (c) => {
 
 // mount keyRoute to root app
 app.route("/", keyRoute);
-Deno.serve(app.fetch);
 
 const storeValue = async (c: Context): Promise<{
   status: 204 | 400 | 500;

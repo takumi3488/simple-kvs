@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { app } from "./server.ts";
+import { app } from "./app.ts";
 
 Deno.test("store text", async () => {
   const { status } = await app.request("/testKey", {
