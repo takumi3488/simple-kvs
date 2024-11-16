@@ -1,4 +1,4 @@
-import { Context, Hono } from 'hono';
+import { Context, Hono } from "hono";
 
 const kv = await Deno.openKv(Deno.env.get("KVS_PATH"));
 const enableKeyList = Deno.env.get("ENABLE_KEY_LIST") === "true";
@@ -24,7 +24,7 @@ keyRoute.use(async (c, next) => {
     return c.body("Invalid key");
   }
   await next();
-})
+});
 
 // get value
 keyRoute.get("/:key", async (c) => {
@@ -52,7 +52,7 @@ keyRoute.get("/:key", async (c) => {
       return c.body("Internal Server Error");
     }
   }
-})
+});
 
 // store value
 keyRoute.put("/:key", async (c) => {
@@ -70,9 +70,9 @@ keyRoute.put("/:key", async (c) => {
       await kv.set([0], keys);
     }
   }
-  c.status(204)
+  c.status(204);
   return c.body(null);
-})
+});
 
 // delete value
 keyRoute.delete("/:key", async (c) => {
@@ -81,20 +81,19 @@ keyRoute.delete("/:key", async (c) => {
   if (enableKeyList) {
     const response = await kv.get([0]);
     const keys = response.value as string[];
-    const filteredKeys = keys.filter(k => k !== key);
+    const filteredKeys = keys.filter((k) => k !== key);
     await kv.set([0], filteredKeys);
   }
   c.status(204);
   return c.body(null);
-})
+});
 
 // mount keyRoute to root app
 app.route("/", keyRoute);
-Deno.serve(app.fetch);
 
 const storeValue = async (c: Context): Promise<{
-  status: 204 | 400 | 500,
-  body?: string
+  status: 204 | 400 | 500;
+  body?: string;
 }> => {
   const key = c.req.param("key");
   const value = await c.req.text();
@@ -104,21 +103,25 @@ const storeValue = async (c: Context): Promise<{
       switch (value) {
         case null: {
           const response = await kv.set([""], value);
-          return response.ok ? {
-            status: 204,
-          } : {
-            status: 500,
-            body: "Internal Server Error"
-          }
+          return response.ok
+            ? {
+              status: 204,
+            }
+            : {
+              status: 500,
+              body: "Internal Server Error",
+            };
         }
         default: {
           const response = await kv.set([key], value);
-          return response.ok ? {
-            status: 204,
-          } : {
-            status: 500,
-            body: "Internal Server Error"
-          }
+          return response.ok
+            ? {
+              status: 204,
+            }
+            : {
+              status: 500,
+              body: "Internal Server Error",
+            };
         }
       }
     }
@@ -126,24 +129,26 @@ const storeValue = async (c: Context): Promise<{
       try {
         const json = JSON.parse(value);
         const response = await kv.set([key], json);
-        return response.ok ? {
-          status: 204,
-        } : {
-          status: 500,
-          body: "Internal Server Error"
-        }
+        return response.ok
+          ? {
+            status: 204,
+          }
+          : {
+            status: 500,
+            body: "Internal Server Error",
+          };
       } catch (_) {
         return {
           status: 400,
-          body: "Invalid value"
-        }
+          body: "Invalid value",
+        };
       }
     }
     default: {
       return {
         status: 400,
-        body: "Invalid content type"
-      }
+        body: "Invalid content type",
+      };
     }
   }
-}
+};
