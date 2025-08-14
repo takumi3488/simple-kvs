@@ -1,4 +1,4 @@
-FROM denoland/deno:alpine-2.4.3
+FROM denoland/deno:alpine-2.4.4
 
 USER deno
 
