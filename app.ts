@@ -103,6 +103,12 @@ const storeValue = async (c: Context): Promise<{
   body?: string;
 }> => {
   const key = c.req.param("key");
+  if (!key) {
+    return {
+      status: 400,
+      body: "Invalid key",
+    };
+  }
   const value = await c.req.text();
   const contentType = c.req.header("content-type");
   switch (contentType) {
