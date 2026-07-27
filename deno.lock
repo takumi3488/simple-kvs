@@ -8,7 +8,7 @@
     "jsr:@std/internal@^1.0.12": "1.0.14",
     "jsr:@std/internal@^1.0.14": "1.0.14",
     "jsr:@std/path@^1.1.5": "1.1.6",
-    "npm:hono@*": "4.12.29"
+    "npm:hono@*": "4.12.32"
   },
   "jsr": {
     "@std/assert@1.0.19": {
@@ -44,8 +44,8 @@
     }
   },
   "npm": {
-    "hono@4.12.29": {
-      "integrity": "sha512-1hNiRjawYrLq/4m3DQQjPGFg0VZkk4RjQJDff/excI6Dm9BiL75qxGrd7/c6YOxPdq6AscP3LiXhQ6fKFC1Waw=="
+    "hono@4.12.32": {
+      "integrity": "sha512-XcuyW9qE2kJn07PkecMOBd5Vq/hMy7mmGw+idz1yblbg9N17ijJODrvPkn7/dwL3Kulj8LcRJ69DLOWf91dRUg=="
     }
   },
   "workspace": {
