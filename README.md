@@ -42,3 +42,8 @@ be created in `/data/${KVS_PATH}`. If not specified, see
 `ENABLE_KEY_LIST`: If “true”, provides an endpoint to retrieve a list of keys.
 Do not set this to “true” unless the number of keys is small, such as in the
 case of a master key.
+
+## Support
+
+If you find simple-kvs useful, consider [sponsoring takumi3488](https://github.com/sponsors/takumi3488)
+to support its development and maintenance.
