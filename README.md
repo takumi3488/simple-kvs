@@ -45,5 +45,6 @@ case of a master key.
 
 ## Support
 
-If you find simple-kvs useful, consider [sponsoring takumi3488](https://github.com/sponsors/takumi3488)
-to support its development and maintenance.
+If you find simple-kvs useful, consider
+[sponsoring takumi3488](https://github.com/sponsors/takumi3488) to support its
+development and maintenance.
